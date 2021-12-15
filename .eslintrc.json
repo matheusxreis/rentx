@@ -21,6 +21,7 @@
         "prettier"
     ],
     "rules": {
+      "prettier/prettier": ["error", {"endOfLine": "auto"}],
 
 "camelcase": "off",
 "import/no-unresolved": "error",
