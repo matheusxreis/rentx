@@ -1,8 +1,8 @@
-import { CategoryRepository } from "../../repositories/categoriesrepository";
-import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
+import { CategoryRepository } from "../../repositories/implementations/categoriesrepository";
 import { CreateCategoryController } from "./CreateCategoryController";
+import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
-const categoriesRepository = new CategoryRepository();
+const categoriesRepository = CategoryRepository.getInstance();
 const createCategoryUseCase = new CreateCategoryUseCase(categoriesRepository);
 // para criar uma nova categoria, eu preciso passar como parâmetro o repositório
 

@@ -1,19 +1,17 @@
-import { response, Router } from "express";
+import { Router } from "express";
 
 // import { Category } from "../model/category";
-import { CategoryRepository } from "../modules/cars/repositories/categoriesrepository";
 import { createCategoryController } from "../modules/cars/useCases/createCategory";
+import { listCategoriesController } from "../modules/cars/useCases/listCategory";
 
 const categoriesRoutes = Router();
-const categoriesRepository = new CategoryRepository(); // funciona como se fosse meu db
 
 categoriesRoutes.post("/", (request, response) => {
   return createCategoryController.handle(request, response);
 });
 
 categoriesRoutes.get("/", (request, response) => {
-  const all = categoriesRepository.list();
-  return response.json(all);
+  return listCategoriesController.handle(request, response);
 });
 
 export { categoriesRoutes };

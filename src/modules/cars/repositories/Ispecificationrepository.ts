@@ -1,5 +1,5 @@
 import { Specification } from "../model/specifications";
-import { SpecificationsRepository } from "./specificationsrepository";
+import { SpecificationsRepository } from "./implementations/specificationsrepository";
 
 interface ICreateSpecificationDTO {
   name: string;
