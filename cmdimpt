@@ -18,3 +18,7 @@ sudo docker logs namecontainer -f #observar logs
 sudo docker-compose stop
 sudo docker-compose start
 sudo docker-compose down #remover todos serviços dentro do dock-composer
+
+
+docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
+

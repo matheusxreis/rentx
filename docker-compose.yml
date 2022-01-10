@@ -1,14 +1,35 @@
 #O docker compose é uma ferramente que ajuda a definir e compartilhar múltiplos containers
 
-version: "3.7"
+version: "3.9"
 
 services:
-  app: 
+  database:
+    image: postgres
+    container_name: database_ignite
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=2299
+      - POSTGRES_DB=rentx
+    volumes:
+      - pgdata:/data/postgres
+
+  app:
     build: .
     container_name: rentx
-    ports: 
+    ports:
       - 3333:3333
     volumes:
-      - .:/usr/docker  
-      #vou pegar o docker file da raiz e mandar p a pasta dele
-      #defino o service com base no diretório do Dockerfile
+      - .:/usr/docker
+    links:
+      - database
+    depends_on: 
+      - database
+
+volumes:
+  pgdata:
+    driver: local
+#vou pegar o docker file da raiz e mandar p a pasta dele
+#defino o service com base no diretório do Dockerfile
