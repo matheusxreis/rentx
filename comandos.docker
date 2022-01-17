@@ -22,3 +22,4 @@ sudo docker-compose down #remover todos serviços dentro do dock-composer
 
 docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
 
+//beekeper studio
