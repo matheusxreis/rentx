@@ -1,17 +1,20 @@
-import { Category } from "../../model/category";
+import { Repository, getRepository } from "typeorm";
+
+import { Category } from "../../entities/category";
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from "../Icategoriesrepository";
 
 class CategoryRepository implements ICategoriesRepository {
-  private categories: Category[];
+  // private categories: Category[];
 
-  private static INSTANCE: CategoryRepository;
+  private repository: Repository<Category>;
+  static INSTANCE: CategoryRepository;
 
   private constructor() {
     // somente minha própria classe pode se instanciar
-    this.categories = [];
+    this.repository = getRepository(Category);
   }
 
   public static getInstance(): CategoryRepository {
