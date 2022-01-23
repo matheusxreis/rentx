@@ -10,7 +10,7 @@ interface IRequest {
 @injectable()
 class CreateCategoryUseCase {
   constructor(
-    @inject("CategoryRepository")
+    @inject("CategoriesRepository")
     private categoriesRepository: ICategoriesRepository
   ) {}
 
@@ -23,7 +23,8 @@ class CreateCategoryUseCase {
       throw new Error("Category already exist");
     }
 
-    this.categoriesRepository.create({ name, description });
+    await this.categoriesRepository.create({ name, description });
+    console.log("Created");
   }
 }
 

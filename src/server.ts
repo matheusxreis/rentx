@@ -5,6 +5,8 @@ import { router } from "./routes";
 import SwaggerFile from "./swagger.json";
 
 import "./database";
+import "reflect-metadata";
+import "./shared/container";
 
 const app = express();
 app.use(express.json());

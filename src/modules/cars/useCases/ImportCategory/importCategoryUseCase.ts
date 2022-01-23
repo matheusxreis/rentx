@@ -13,7 +13,7 @@ class ImportCategoryUseCase {
   loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
     return new Promise((resolve, reject) => {
       // multer -> fs -> csv-parse -> categories -> CategoryRepository.create({})
-      // o multer lê o arquivo da requisição nos routes e criar um novo arquivo na pasta tmp
+      // o multer lê o arquivo da requisição nos routes e cria um novo arquivo na pasta tmp
       const stream = fs.createReadStream(file.path);
       // o fs faz a leitura do arquivo criado pelo multer na pasta tmp em forma de stream
       const categories: IImportCategory[] = [];
