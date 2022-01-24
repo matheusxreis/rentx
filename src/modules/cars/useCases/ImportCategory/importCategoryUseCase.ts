@@ -1,5 +1,6 @@
 import { parse } from "csv-parse";
 import fs from "fs";
+import { inject, injectable } from "tsyringe";
 
 import { ICategoriesRepository } from "../../repositories/Icategoriesrepository";
 
@@ -7,8 +8,12 @@ interface IImportCategory {
   name: string;
   description: string;
 }
+@injectable()
 class ImportCategoryUseCase {
-  constructor(private categoryRepository: ICategoriesRepository) {}
+  constructor(
+    @inject("CategoriesRepository")
+    private categoriesRepository: ICategoriesRepository
+  ) {}
 
   loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
     return new Promise((resolve, reject) => {
@@ -46,13 +51,15 @@ class ImportCategoryUseCase {
   async execute(file: Express.Multer.File): Promise<void> {
     const categories = await this.loadCategories(file);
 
-    categories.map((x) => {
+    categories.map(async (x) => {
       const { name, description } = x;
 
-      const alreadyExist = this.categoryRepository.findByName(name);
+      const alreadyExist = await this.categoriesRepository.findByName(name);
+
+      // Sem o await, o findByName sempre vai retornar <Pending>
 
       if (!alreadyExist) {
-        this.categoryRepository.create({
+        this.categoriesRepository.create({
           name,
           description,
         });

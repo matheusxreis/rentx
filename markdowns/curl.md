@@ -15,7 +15,11 @@ Segue abaixo os comandos utilizados:
 ```bash
 curl -X POST -d '{"name":"SUV", "description":"Carros de grande porte"}' -H "Content-Type: application/json" http://localhost:3333/categories
 ```
+**POST enviando um file em um formulário**:
 
+```bash
+curl -F file=@/tmp/categories.node.rentx  http://localhost:3333/categories/import
+```
 **GET**:
 
 ```bash

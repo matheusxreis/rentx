@@ -1,13 +1,13 @@
-import { SpecificationsRepository } from "../../repositories/implementations/specificationsrepository";
-import { CreateSpecificationController } from "./CreateSpecificationController";
-import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
+// import { SpecificationsRepository } from "../../repositories/implementations/specificationsrepository";
+// import { CreateSpecificationController } from "./CreateSpecificationController";
+// import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
 
-const specificationsRepository = SpecificationsRepository.getInstance();
-const createSpecificationUseCase = new CreateSpecificationUseCase(
-  specificationsRepository
-);
-const createSpecificationController = new CreateSpecificationController(
-  createSpecificationUseCase
-);
+// const specificationsRepository = SpecificationsRepository.getInstance();
+// const createSpecificationUseCase = new CreateSpecificationUseCase(
+//   specificationsRepository
+// );
+// const createSpecificationController = new CreateSpecificationController(
+//   createSpecificationUseCase
+// );
 
-export { createSpecificationController };
+// export { createSpecificationController };
