@@ -7,33 +7,31 @@ import {
 } from "../Ispecificationrepository";
 
 class SpecificationsRepository implements ISpecificationsRepository {
-  private specification: Repository<Specification>;
+  private repository: Repository<Specification>;
 
   constructor() {
-    this.specification = getRepository(Specification);
+    this.repository = getRepository(Specification);
   }
 
-  create({ description, name }: ICreateSpecificationDTO): void {
-    const specification = new Specification();
-
-    Object.assign(specification, {
-      name,
+  async create({ description, name }: ICreateSpecificationDTO): Promise<void> {
+    const specification = this.repository.create({
       description,
-      created_at: new Date(),
+      name,
     });
 
+    await this.repository.save(specification);
     // this.specifications.push(specification);
   }
 
-   findByName(name: string): Specification {}
-  //   const alreadyExist = this.specifications.find((x) => x.name === name);
+  async findByName(name: string): Promise<Specification> {
+    const alreadyExist = await this.repository.findOne({ name });
 
-  //   return alreadyExist;
-  // }
+    return alreadyExist;
+  }
 
-   list(): Specification[] {}
-  //   return this.specifications;
-  // }
+  // list(): Specification[] {}
+  // //   return this.specifications;
+  // // }
 }
 
 export { SpecificationsRepository };

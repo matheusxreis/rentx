@@ -46,4 +46,11 @@ Caso você compartilhe um código com um colega referente ao mesmo projeto e ban
 yarn typeorm migration:run
 ```
 
+Para criar uma nova migration:
+
+```bash
+
+yarn typeorm migration:create -n CreateSpecifications
+```
+
  
