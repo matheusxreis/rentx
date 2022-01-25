@@ -1,4 +1,4 @@
-//import "reflect-metadata";
+// import "reflect-metadata";
 
 import { Request, Response } from "express";
 import { container } from "tsyringe";
@@ -10,13 +10,10 @@ class AuthenticateUserController {
     const { email, password } = request.body;
 
     const authenticateUserUseCase = container.resolve(AuthenticateUserUseCase);
-    try {
-      const token = await authenticateUserUseCase.execute({ email, password });
 
-      return response.json(token);
-    } catch {
-      return response.status(401).send();
-    }
+    const token = await authenticateUserUseCase.execute({ email, password });
+
+    return response.json(token);
   }
 }
 

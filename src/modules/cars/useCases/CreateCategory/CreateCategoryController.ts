@@ -1,4 +1,4 @@
-//import "reflect-metadata";
+// import "reflect-metadata";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
@@ -10,13 +10,9 @@ class CreateCategoryController {
 
     const createCategoryUseCase = container.resolve(CreateCategoryUseCase);
 
-    try {
-      await createCategoryUseCase.execute({ name, description });
+    await createCategoryUseCase.execute({ name, description });
 
-      return response.status(201).send();
-    } catch (err) {
-      return response.status(400).send();
-    }
+    return response.status(201).send();
 
     // O tratamento com try/catch fui eu quem fiz aqui, pois estava ocorrendo um probleminha com a aplicação =)
   }
