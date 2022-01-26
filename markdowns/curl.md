@@ -29,3 +29,9 @@ curl -X POST -d '{"name":"testezinho3", "password":"54321", "driver_license":"AY
 ```bash
 curl http://localhost:3333/categories
 ```
+
+***PATCH c file e token**
+
+```bash 
+curl -X PATCH -F file=@/home/reis/Imagens/avatares/turtle.jpg -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDMyMzIwMTIsImV4cCI6MTY0MzMxODQxMiwic3ViIjoiODlhZjNhOTktZmQ0OS00ZDI1LWE2ODAtN2RjMDZmMTg4N2RkIn0.qMqrRwGgjU_woX7GDPPtlErx8EAJ_8sFWhmM13uSUHs" http://localhost:3333/users/avatar
+```
